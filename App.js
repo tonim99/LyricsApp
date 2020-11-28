@@ -1,4 +1,6 @@
+import 'react-native-gesture-handler'
 import React, { useState }from 'react';
+import { NavigationContainer, StackActions } from '@react-navigation/native'
 import { StyleSheet, Text, View } from 'react-native';
 import { DefaultTheme, Provider as PaperProvider, Appbar, Searchbar } from 'react-native-paper'
 import Header from './components/Header'
@@ -19,32 +21,34 @@ export default function App() {
 
 
   return (
-		<PaperProvider theme={theme}>
-      <Login />
-			<View style={styles.container}>
-				{/* <Header /> */}
-				<Appbar.Header>
-					<Appbar.Action icon='menu' />
-					<Appbar.Content title='Title' />
-					<Appbar.Action icon='magnify' onPress={_handleSearch} />
-				</Appbar.Header>
-				<View style={styles.content}>
-					{/* <Search /> */}
-					<Searchbar
-						iconColor='#ffffff'
-						placeholder='Search'
-						onChangeText={onChangeSearch}
-						value={searchQuery}
-					/>
-					<View style={styles.list}>
-						<Lists />
-					</View>
-					{/* <View style={styles.faves}>
+		<NavigationContainer>
+			<PaperProvider theme={theme}>
+				<Login />
+				<View style={styles.container}>
+					{/* <Header /> */}
+					<Appbar.Header>
+						<Appbar.Action icon='menu' />
+						<Appbar.Content title='Title' />
+						<Appbar.Action icon='magnify' onPress={_handleSearch} />
+					</Appbar.Header>
+					<View style={styles.content}>
+						{/* <Search /> */}
+						<Searchbar
+							iconColor='#ffffff'
+							placeholder='Search'
+							onChangeText={onChangeSearch}
+							value={searchQuery}
+						/>
+						<View style={styles.list}>
+							<Lists />
+						</View>
+						{/* <View style={styles.faves}>
 						<Faves />
 					</View> */}
+					</View>
 				</View>
-			</View>
-		</PaperProvider>
+			</PaperProvider>
+		</NavigationContainer>
 	);
 }
 const theme = {
