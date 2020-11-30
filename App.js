@@ -3,70 +3,83 @@ import React, { useState, useEffect, useContext, createContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View, FlatList, Alert, Button } from 'react-native';
-import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+import { createDrawerNavigator } from '@react-navigation/drawer'
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
+import { MaterialCommunityIcons } from 'react-native-vector-icons'
 import { v4 as uuid } from 'uuid';
-// import { Provider as UserProvider, Provider } from './components/context'
-// import Header from './components/Header';
-// import List from './components/List';
-// import CreateList from './components/CreateList';
-// import Search from './components/Search';
-import Login from './app/screens/Login';
-import WelcomeScreen from './app/screens/WelcomeScreen'
-import Signup from './app/screens/Signup';
-import Songs from './app/screens/Songs'
-import colors from './app/config/colors'
-// function HomeScreen({navigation}) {
-// 	return (
-// 		<View>
-// 			<Text>Home Screen</Text>
-// 			<Button title="Go to Details"
-// 				onPress={() => navigation.navigate('Details')}
-// 			/>
-// 		</View>
-// 	);
-// }
-// function DetailScreen() {
-// 	return (
-// 		<View>
-// 			<Text>Detail Screen</Text>
-// 		</View>
-// 	);
-// }
-const Stack = createStackNavigator();
+import Icon from 'react-native-vector-icons'
+import LoginScreen from './app/screens/LoginScreen';
+import WelcomeScreen from './app/screens/WelcomeScreen';
+import SignupScreen from './app/screens/SignupScreen';
+import TabScreen from './app/screens/TabScreen'
 
+import colors from './app/config/colors';
+
+const Drawer = createDrawerNavigator()
+// const SongStackScreen = ({ navigation }) => (
+// 	<SongStack.Navigator
+// 		screenOptions={{
+// 			headerStyle: {
+// 				backgroundColor: colors.primary,
+// 			},
+// 			headerTintColor: colors.text,
+// 			headerTitleStyle: {
+// 				fontWeight: 'bold',
+// 				fontSize: 22,
+// 			},
+// 		}}>
+// 		<SongStack.Screen
+// 			name='Song'
+// 			component={Song}
+// 			options={{
+// 				title: 'Songs',
+// 				headerLeft: () => <Text style={styles.text} onPress={() => navigation.openDrawer()}>Nav</Text>,
+// 			}}
+// 		/>
+// 	</SongStack.Navigator>
+// );
+// const ListStackScreen = ({ navigation }) => (
+// 	<ListStack.Navigator
+// 		screenOptions={{
+// 			headerStyle: {
+// 				backgroundColor: colors.primary,
+// 			},
+// 			headerTintColor: colors.text,
+// 			headerTitleStyle: {
+// 				fontWeight: 'bold',
+// 				fontSize: 22,
+// 			},
+// 		}}>
+// 		<ListStack.Screen
+// 			name='List'
+// 			component={List}
+// 			options={{
+// 				title: 'Lists',
+// 				headerLeft: () => (
+// 					<Text style={styles.text} onPress={() => navigation.openDrawer()}>
+// 						Nav
+// 					</Text>
+// 				),
+// 			}}
+// 		/>
+// 	</ListStack.Navigator>
+// );
 export default function App() {
-	const url = 'http://localhost:3000/';
-	//   const AuthStack = createStackNavigator();
-  const [searchQuery, setSearchQuery] = useState('');
-  // const [songs, setSongs] = useState([])
-	// const onChangeSearch = (query) => setSearchQuery(query);
-	// const _handleSearch = (query) => setSearchQuery(query);
-	const [lists, setLists] = useState([
-		{
-			id: uuid(),
-			text: 'Set List 1',
-		},
-		{
-			id: uuid(),
-			text: 'Set List 2',
-		},
-		{
-			id: uuid(),
-			text: 'Set List 3',
-		},
-	]);
-	const deleteList = (id) => {
-		setLists((prevLists) => {
-			return prevLists.filter((item) => item.id !== id);
-		});
-	};
-	const newList = (text) => {
-		!text
-			? Alert.alert('Try Again', 'Please Enter A List Name', { text: 'Okay' })
-			: setLists((prevLists) => {
-					return [...prevLists, { id: uuid(), text }];
-			  });
-	};
+	// const url = 'http://localhost:3000/';
+	// const [searchQuery, setSearchQuery] = useState('');
+	
+	// const deleteList = (id) => {
+	// 	setLists((prevLists) => {
+	// 		return prevLists.filter((item) => item.id !== id);
+	// 	});
+	// };
+	// const newList = (text) => {
+	// 	!text
+	// 		? Alert.alert('Try Again', 'Please Enter A List Name', { text: 'Okay' })
+	// 		: setLists((prevLists) => {
+	// 				return [...prevLists, { id: uuid(), text }];
+	// 		  });
+	// };
 	// const getLists = () => {
 	// 	return fetch(`${url}/setlists`)
 	// 		.then((res) => res.json())
@@ -77,24 +90,24 @@ export default function App() {
 	// 		.catch((error) => {
 	// 			console.error(error);
 	// 		});
-  // };
-  // getLists()
-//   useEffect(() => {
-//     const getSongs = () => {
-// 			return fetch(`${url}/songs`)
-// 				.then((res) => res.json())
-// 				.then((data) => {
-// 					console.log('data', data);
-// 					setSongs(data);
-// 				})
-// 				.catch((error) => {
-// 					console.error(error);
-// 				});
-// 		};
-// 		getSongs();
-// }, [])
-  
-//  console.log('songs', songs)
+	// };
+	// getLists()
+	//   useEffect(() => {
+	//     const getSongs = () => {
+	// 			return fetch(`${url}/songs`)
+	// 				.then((res) => res.json())
+	// 				.then((data) => {
+	// 					console.log('data', data);
+	// 					setSongs(data);
+	// 				})
+	// 				.catch((error) => {
+	// 					console.error(error);
+	// 				});
+	// 		};
+	// 		getSongs();
+	// }, [])
+
+	//  console.log('songs', songs)
 
 	// fetch(`${url}/songs/search/artist/${searchQuery}`)
 	// 	.then((res) => res.json())
@@ -102,23 +115,32 @@ export default function App() {
 
 	return (
 		<NavigationContainer>
-    		<Stack.Navigator 
-				initialRouteName="Songs"
+			<Drawer.Navigator initialRouteName='Song'>
+				<Drawer.Screen name='Song' component={TabScreen} />
+				
+				{/* <Drawer.Screen name='List' component={ListStackScreen} /> */}
+			</Drawer.Navigator>
+			{/* <Stack.Navigator
+				initialRouteName='Song'
 				screenOptions={{
 					headerStyle: {
-					backgroundColor: colors.primary
+						backgroundColor: colors.primary,
 					},
 					headerTintColor: colors.text,
 					headerTitleStyle: {
-					fontWeight: 'bold',
-					fontSize: 22
-					}
-				}}
-			>
+						fontWeight: 'bold',
+						fontSize: 22,
+					},
+				}}>
 				<Stack.Screen
-					name='Songs'
-					component={Songs}
-					options={{ title: 'Songs' }}
+					name='Song'
+					component={Song}
+					options={{ title: 'Song' }}
+				/>
+				<Stack.Screen
+					name='List'
+					component={List}
+					options={{ title: 'List' }}
 				/>
 				<Stack.Screen
 					name='Welcome'
@@ -135,24 +157,19 @@ export default function App() {
 					component={Signup}
 					options={{ title: 'Sign Up' }}
 				/>
-			</Stack.Navigator>
+			</Stack.Navigator> */}
 		</NavigationContainer>
 	);
 }
-const theme = {
-	...DefaultTheme,
-	roundness: 0,
-	colors: {
-		...DefaultTheme.colors,
-		primary: '#440bd4',
-		background: '#1d1f2e',
-		placeholder: '#ffffff',
-		text: '#ffffff',
-	},
-};
+
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#1d1f2e',
+		backgroundColor: colors.background,
 	},
+	text: {
+		color: colors.text,
+		marginLeft: 20,
+		fontSize: 18
+	}
 });

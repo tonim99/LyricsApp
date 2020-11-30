@@ -7,15 +7,16 @@ import {
 	TouchableOpacity,
 } from 'react-native';
 
-export default function CreateList({ newList }) {
+import colors from '../config/colors';
+export default function CreateList(props) {
 	const [text, setText] = useState('');
-
 	const onChange = (val) => setText(val);
+	
 	return (
 		<View>
 			<TextInput
 				placeholder='New Setlist'
-				placeholderTextColor='#ffffff'
+				placeholderTextColor={colors.text}
 				style={styles.input}
 				onChangeText={onChange}
 			/>
@@ -33,21 +34,21 @@ const styles = StyleSheet.create({
 		height: 60,
 		padding: 8,
 		fontSize: 16,
-		color: '#ffffff',
-		borderTopColor: '#1d1f2e',
-		borderRightColor: '#1d1f2e',
-		borderLeftColor: '#1d1f2e',
-		borderBottomColor: '#ffffff',
+		color: colors.text,
+		borderTopColor: colors.background,
+		borderRightColor: colors.background,
+		borderLeftColor: colors.background,
+		borderBottomColor: colors.text,
 		borderWidth: 2,
 		borderStyle: 'solid',
 	},
 	btn: {
-		backgroundColor: '#ffda1f',
+		backgroundColor: colors.secondary,
 		padding: 9,
 		margin: 10,
 	},
 	btnText: {
-		color: 'black',
+		color: colors.background,
 		fontSize: 20,
 		textAlign: 'center',
 	},

@@ -1,3 +1,20 @@
+const [songs, setSongs] = useState([
+	{
+		id: uuid(),
+		text: 'Ani Difranco',
+	},
+	{
+		id: uuid(),
+		text: 'Adele',
+	},
+	{
+		id: uuid(),
+		text: 'Fleetwood Mac',
+	},
+]);
+
+
+
 // <PaperProvider theme={theme}>
 {
 	/* <NavigationContainer> */

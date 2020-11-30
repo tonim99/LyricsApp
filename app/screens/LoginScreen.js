@@ -14,7 +14,7 @@ import colors from '../../app/config/colors';
 //         body: JSON.stringify({ username, password })
 //     })
 // }
-export default function Login({ navigation }, username, password) {
+export default function LoginScreen({ navigation }, username, password) {
 //     const url = 'http://localhost:3000/'
 //     const userLogin = () => {
 //         fetch(`${url}login`, {

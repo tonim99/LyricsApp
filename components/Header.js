@@ -1,19 +1,19 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Appbar } from 'react-native-paper'
-export default function Header({ title, navigation, onChangeSearch, _handleSearch}) {
-	// console.log({onChangeSearch})
-	// const _handleSearch = () => console.log('Searching');
-	return (
-		<View>
-			<Appbar.Header>
-				<Appbar.Action icon='menu' />
-				<Appbar.Content title='Home' />
-				<Appbar.Action icon='magnify' onPress={onChangeSearch} />
-			</Appbar.Header>
-		</View>
-	);
-}
+// import React from 'react';
+// import { StyleSheet, Text, View } from 'react-native';
+// import { Appbar } from 'react-native-paper'
+// export default function Header({ title, navigation, onChangeSearch, _handleSearch}) {
+// 	// console.log({onChangeSearch})
+// 	// const _handleSearch = () => console.log('Searching');
+// 	return (
+// 		<View>
+// 			<Appbar.Header>
+// 				<Appbar.Action icon='menu' />
+// 				<Appbar.Content title='Home' />
+// 				<Appbar.Action icon='magnify' onPress={onChangeSearch} />
+// 			</Appbar.Header>
+// 		</View>
+// 	);
+// }
 
 // const styles = StyleSheet.create({
 // 	header: {

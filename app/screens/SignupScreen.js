@@ -10,7 +10,7 @@ import {
 
 import colors from '../config/colors';
 
-export default function Signup({ navigation }) {
+export default function SignupScreen({ navigation }) {
 
     	return (
 		<ImageBackground
@@ -27,7 +27,7 @@ export default function Signup({ navigation }) {
 				<View style={styles.buttonContainer}>
 					<TouchableOpacity
 						style={styles.button}
-						onPress={() => navigation.push('Signup')}>
+						onPress={() => navigation.push('SignupScreen')}>
 						<Text style={styles.buttonText}>Sign Up</Text>
 					</TouchableOpacity>
 				</View>

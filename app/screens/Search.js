@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, TextInput, Alert, TouchableOpacity } from 'react-native';
-
+import { color } from 'react-native-reanimated';
+import colors from '../config/colors';
 export default function Search({_handleSearch, navigation, onChangeSearch}) {
     const [text, setText] = useState('')
     const changeHandler = (val) => {
@@ -10,14 +11,14 @@ export default function Search({_handleSearch, navigation, onChangeSearch}) {
 		<View>
 			<TextInput
 				placeholder='Search'
-				placeholderTextColor='#ffffff'
+				placeholderTextColor={colors.text}
 				style={styles.input}
 				onChangeText={changeHandler}
 			/>
 			<TouchableOpacity style={styles.btn} 
-			// onPress={() => onChangeSearch(text)}
+			 onPress={() => onChangeSearch(text)}
 			>
-				<Text style={styles.btnText}>Search for Lyrics</Text>
+			<Text style={styles.btnText}>Search for Lyrics</Text>
 			</TouchableOpacity>
 		</View>
 	);
@@ -30,21 +31,22 @@ const styles = StyleSheet.create({
 		height: 60,
 		padding: 8,
 		fontSize: 16,
-		color: '#ffffff',
-		borderTopColor: '#1d1f2e',
-		borderRightColor: '#1d1f2e',
-		borderLeftColor: '#1d1f2e',
-		borderBottomColor: '#ffffff',
+		color: colors.text,
+		borderTopColor: colors.background,
+		borderRightColor: colors.background,
+		borderLeftColor: colors.background,
+		borderBottomColor: colors.text,
 		borderWidth: 2,
 		borderStyle: 'solid',
 	},
 	btn: {
-		backgroundColor: '#ffda1f',
+		backgroundColor: colors.secondary,
 		padding: 9,
 		margin: 10,
+		marginBottom: 50,
 	},
 	btnText: {
-		color: 'black',
+		color: colors.background,
 		fontSize: 20,
 		textAlign: 'center',
 	},
