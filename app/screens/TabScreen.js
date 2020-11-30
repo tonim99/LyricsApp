@@ -105,8 +105,12 @@ const ListStackScreen = ({ navigation }) => (
 			name='List'
 			component={ListScreen}
 			options={{
-				title: 'Lists',
-				headerLeft: () => <MaterialCommunityIcons name='menu' color={colors.text} size={28} onPress={() => navigation.openDrawer()} />
+				title: 'My Lists',
+				headerLeft: () => (
+					<View style={{marginLeft: 10}}>
+						<MaterialCommunityIcons name='menu' color={colors.text} size={28} onPress={() => navigation.openDrawer()}/>
+					</View>
+				)
 			}}
 		/>
 	</ListStack.Navigator>
@@ -129,12 +133,14 @@ const LoginStackScreen = ({ navigation }) => (
 			options={{
 				title: 'Please Log In',
 				headerLeft: () => (
-					<MaterialCommunityIcons
-						name='menu'
-						color={colors.text}
-						size={28}
-						onPress={() => navigation.openDrawer()}
-					/>
+					<View style={{ marginLeft: 10 }}>
+						<MaterialCommunityIcons
+							name='menu'
+							color={colors.text}
+							size={28}
+							onPress={() => navigation.openDrawer()}
+						/>
+					</View>
 				),
 			}}
 		/>

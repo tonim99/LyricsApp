@@ -6,64 +6,14 @@ import { StyleSheet, Text, View, FlatList, Alert, Button } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 import { MaterialCommunityIcons } from 'react-native-vector-icons'
-import { v4 as uuid } from 'uuid';
-import Icon from 'react-native-vector-icons'
-import LoginScreen from './app/screens/LoginScreen';
-import WelcomeScreen from './app/screens/WelcomeScreen';
-import SignupScreen from './app/screens/SignupScreen';
+
 import TabScreen from './app/screens/TabScreen'
+import { DrawerContent } from './app/screens/DrawerContent'
 
 import colors from './app/config/colors';
 
 const Drawer = createDrawerNavigator()
-// const SongStackScreen = ({ navigation }) => (
-// 	<SongStack.Navigator
-// 		screenOptions={{
-// 			headerStyle: {
-// 				backgroundColor: colors.primary,
-// 			},
-// 			headerTintColor: colors.text,
-// 			headerTitleStyle: {
-// 				fontWeight: 'bold',
-// 				fontSize: 22,
-// 			},
-// 		}}>
-// 		<SongStack.Screen
-// 			name='Song'
-// 			component={Song}
-// 			options={{
-// 				title: 'Songs',
-// 				headerLeft: () => <Text style={styles.text} onPress={() => navigation.openDrawer()}>Nav</Text>,
-// 			}}
-// 		/>
-// 	</SongStack.Navigator>
-// );
-// const ListStackScreen = ({ navigation }) => (
-// 	<ListStack.Navigator
-// 		screenOptions={{
-// 			headerStyle: {
-// 				backgroundColor: colors.primary,
-// 			},
-// 			headerTintColor: colors.text,
-// 			headerTitleStyle: {
-// 				fontWeight: 'bold',
-// 				fontSize: 22,
-// 			},
-// 		}}>
-// 		<ListStack.Screen
-// 			name='List'
-// 			component={List}
-// 			options={{
-// 				title: 'Lists',
-// 				headerLeft: () => (
-// 					<Text style={styles.text} onPress={() => navigation.openDrawer()}>
-// 						Nav
-// 					</Text>
-// 				),
-// 			}}
-// 		/>
-// 	</ListStack.Navigator>
-// );
+
 export default function App() {
 	// const url = 'http://localhost:3000/';
 	// const [searchQuery, setSearchQuery] = useState('');
@@ -115,49 +65,9 @@ export default function App() {
 
 	return (
 		<NavigationContainer>
-			<Drawer.Navigator initialRouteName='Song'>
+			<Drawer.Navigator drawerContent={props => <DrawerContent {...props}/>}>
 				<Drawer.Screen name='Song' component={TabScreen} />
-				
-				{/* <Drawer.Screen name='List' component={ListStackScreen} /> */}
 			</Drawer.Navigator>
-			{/* <Stack.Navigator
-				initialRouteName='Song'
-				screenOptions={{
-					headerStyle: {
-						backgroundColor: colors.primary,
-					},
-					headerTintColor: colors.text,
-					headerTitleStyle: {
-						fontWeight: 'bold',
-						fontSize: 22,
-					},
-				}}>
-				<Stack.Screen
-					name='Song'
-					component={Song}
-					options={{ title: 'Song' }}
-				/>
-				<Stack.Screen
-					name='List'
-					component={List}
-					options={{ title: 'List' }}
-				/>
-				<Stack.Screen
-					name='Welcome'
-					component={WelcomeScreen}
-					options={{ title: 'Welcome' }}
-				/>
-				<Stack.Screen
-					name='Log In'
-					component={Login}
-					options={{ title: 'Log In' }}
-				/>
-				<Stack.Screen
-					name='Sign Up'
-					component={Signup}
-					options={{ title: 'Sign Up' }}
-				/>
-			</Stack.Navigator> */}
 		</NavigationContainer>
 	);
 }

@@ -5,8 +5,9 @@ import { StyleSheet, View, Text, ImageBackground, TouchableOpacity } from 'react
 
 
 import colors from '../config/colors'
+import LoginScreen from './LoginScreen';
 
-function WelcomeScreen({ navigation }) {
+function WelcomeScreen({ navigation, LoginScreen }) {
 	return (
 		<ImageBackground
 			style={styles.background}
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		position: 'absolute',
-		top: 325,
+		top: 250,
 		alignItems: 'center',
 	},
 	welcomeText: {
