@@ -15,6 +15,7 @@ import {
 } from 'react-native-paper'
 import colors from '../config/colors'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import SongScreen from './SongScreen'
 
 export function DrawerContent(props) {
     return (
@@ -45,14 +46,14 @@ export function DrawerContent(props) {
 								onPress={() => {}}
 							/>
 							<DrawerItem
-								icon={({ color, size }) => (
+								icon={() => (
 									<Icon name='music' color={colors.background} size={28} />
 								)}
 								label='Songs'
 								onPress={() => {}}
 							/>
 							<DrawerItem
-								icon={({ color, size }) => (
+								icon={() => (
 									<Icon
 										name='heart-outline'
 										color={colors.background}
@@ -63,7 +64,7 @@ export function DrawerContent(props) {
 								onPress={() => {}}
 							/>
 							<DrawerItem
-								icon={({ color, size }) => (
+								icon={() => (
 									<Icon
 										name='magnify'
 										color={colors.background}
@@ -78,7 +79,7 @@ export function DrawerContent(props) {
 				</DrawerContentScrollView>
 				<Drawer.Section>
 					<DrawerItem
-						icon={({ color, size }) => (
+						icon={() => (
 							<Icon name='exit-to-app' color={colors.background} size={22} />
 						)}
 						label='Sign Out'

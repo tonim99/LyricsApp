@@ -6,12 +6,15 @@ import {
 	FlatList,
 	TouchableOpacity,
 	SafeAreaView,
+	TextInput,
+	Alert
 } from 'react-native';
-import CreateList from './CreateList';
 import { v4 as uuid } from 'uuid';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import colors from '../config/colors';
 
 export default function ListScreen({ navigation }) {
+	const [text, setText] = useState('');
 	const [lists, setLists] = useState([
 		{
 			id: uuid(),
@@ -26,10 +29,10 @@ export default function ListScreen({ navigation }) {
 			text: 'Set List 3',
 		},
 	]);
-
+	const onChange = (val) => setText(val);
 	const deleteList = (id) => {
 		setLists((prevLists) => {
-			return prevLists.filter((item) => item.id !== id);
+			return prevLists.filter((item) => item.id != id);
 		});
 	};
 	const newList = (text) => {
@@ -41,12 +44,30 @@ export default function ListScreen({ navigation }) {
 	};
 	return (
 		<SafeAreaView style={styles.container}>
-			<CreateList list={lists}/>
+			<View>
+				<TextInput
+					placeholder='New Setlist'
+					placeholderTextColor={colors.text}
+					style={styles.input}
+					onChangeText={onChange}
+				/>
+				<TouchableOpacity style={styles.btn} onPress={() => newList(text)}>
+					<Text style={styles.btnText}>Create New</Text>
+				</TouchableOpacity>
+			</View>
 			<FlatList
 				data={lists}
 				renderItem={({ item }) => (
 					<TouchableOpacity>
-						<Text style={styles.listText}>{item.text}</Text>
+						<Text style={styles.listText}>
+							{item.text}{'                                        '}
+							<Icon
+								onPress={()=>deleteList(item.id)}
+								name='delete'
+								color={colors.selectedText}
+								size={24}
+							/>
+						</Text>
 					</TouchableOpacity>
 				)}
 			/>
@@ -57,6 +78,30 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: colors.background,
+	},
+	input: {
+		alignItems: 'center',
+		margin: 10,
+		height: 60,
+		padding: 8,
+		fontSize: 16,
+		color: colors.text,
+		borderTopColor: colors.background,
+		borderRightColor: colors.background,
+		borderLeftColor: colors.background,
+		borderBottomColor: colors.text,
+		borderWidth: 2,
+		borderStyle: 'solid',
+	},
+	btn: {
+		backgroundColor: colors.secondary,
+		padding: 9,
+		margin: 10,
+	},
+	btnText: {
+		color: colors.background,
+		fontSize: 20,
+		textAlign: 'center',
 	},
 	listText: {
 		padding: 15,
