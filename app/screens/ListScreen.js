@@ -7,10 +7,10 @@ import {
 	TouchableOpacity,
 	SafeAreaView,
 	TextInput,
-	Alert
+	Alert,
 } from 'react-native';
 import { v4 as uuid } from 'uuid';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import colors from '../config/colors';
 
 export default function ListScreen({ navigation }) {
@@ -32,7 +32,7 @@ export default function ListScreen({ navigation }) {
 	const onChange = (val) => setText(val);
 	const deleteList = (id) => {
 		setLists((prevLists) => {
-			return prevLists.filter((item) => item.id != id);
+			return prevLists.filter((list) => list.id != id);
 		});
 	};
 	const newList = (text) => {
@@ -60,9 +60,10 @@ export default function ListScreen({ navigation }) {
 				renderItem={({ item }) => (
 					<TouchableOpacity>
 						<Text style={styles.listText}>
-							{item.text}{'                                        '}
+							{item.text}
+							{'                                        '}
 							<Icon
-								onPress={()=>deleteList(item.id)}
+								onPress={() => deleteList(list.id)}
 								name='delete'
 								color={colors.selectedText}
 								size={24}

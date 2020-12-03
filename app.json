@@ -27,6 +27,7 @@
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
-    }
+    },
+    "description": "Hello! This is an app that will allow vocalists to search for lyrics and create lists that can be used during performances."
   }
 }
