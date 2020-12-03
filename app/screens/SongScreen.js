@@ -12,12 +12,8 @@ import { v4 as uuid } from 'uuid';
 import colors from '../config/colors';
 
 export default function SongScreen({ navigation }) {
+	const [search, setSearch] = ('')
 	const [songs, setSongs] = useState([
-		{
-			id: uuid(),
-			artist: 'Ani DiFranco',
-			track: 'Play God',
-		},
 		{
 			id: uuid(),
 			artist: 'Adele',
@@ -25,14 +21,18 @@ export default function SongScreen({ navigation }) {
 		},
 		{
 			id: uuid(),
+			artist: 'Ani DiFranco',
+			track: 'Play God',
+		},
+		{
+			id: uuid(),
 			artist: 'Fleetwood Mac',
 			track: 'Dreams',
 		},
 	]);
-
+	// const changeHandler = (val) => setSearch(val)
 	return (
 		<SafeAreaView style={styles.container}>
-			<Search />
 			<FlatList
 				data={songs}
 				renderItem={({ item }) => (
@@ -48,11 +48,13 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: colors.background,
+		paddingTop: 20
 	},
 	listText: {
 		padding: 15,
 		marginLeft: 10,
 		marginRight: 10,
+		marginTop: 20,
 		color: colors.text,
 		fontSize: 24,
 		borderColor: colors.text,

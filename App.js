@@ -6,7 +6,7 @@ import { StyleSheet, Text, View, FlatList, Alert, Button } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 import { MaterialCommunityIcons } from 'react-native-vector-icons'
-
+import Search from './app/screens/Search'
 import TabScreen from './app/screens/TabScreen'
 import { DrawerContent } from './app/screens/DrawerContent'
 
@@ -66,7 +66,7 @@ export default function App() {
 	return (
 		<NavigationContainer>
 			<Drawer.Navigator drawerContent={props => <DrawerContent {...props}/>}>
-				<Drawer.Screen name='Song' component={TabScreen} />
+				<Drawer.Screen name='Main' component={TabScreen} />
 			</Drawer.Navigator>
 		</NavigationContainer>
 	);

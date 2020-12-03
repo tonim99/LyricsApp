@@ -17,28 +17,29 @@ import colors from '../config/colors'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import SongScreen from './SongScreen'
 
-export function DrawerContent(props) {
+export function DrawerContent(props, {navigation}) {
     return (
-			<View style={{ flex: 1 }}>
+			<View style={styles.drawer}>
 				<DrawerContentScrollView {...props}>
 					<View style={styles.drawerContent}>
 						<Drawer.Section>
 							<DrawerItem
-								icon={({ color, size }) => (
+                                style={styles.item}
+								icon={() => (
 									<Icon
 										name='home-outline'
-										color={colors.background}
+										color={colors.selectedText}
 										size={28}
 									/>
 								)}
-								label='Home'
-								onPress={() => {}}
+                                label='Home'
+								onPress={() =>{}}
 							/>
 							<DrawerItem
-								icon={({ color, size }) => (
+								icon={() => (
 									<Icon
 										name='account-outline'
-										color={colors.background}
+										color={colors.selectedText}
 										size={28}
 									/>
 								)}
@@ -47,7 +48,7 @@ export function DrawerContent(props) {
 							/>
 							<DrawerItem
 								icon={() => (
-									<Icon name='music' color={colors.background} size={28} />
+									<Icon name='heart-outline' color={colors.selectedText} size={28} />
 								)}
 								label='Songs'
 								onPress={() => {}}
@@ -55,8 +56,8 @@ export function DrawerContent(props) {
 							<DrawerItem
 								icon={() => (
 									<Icon
-										name='heart-outline'
-										color={colors.background}
+										name='music'
+										color={colors.selectedText}
 										size={28}
 									/>
 								)}
@@ -67,7 +68,7 @@ export function DrawerContent(props) {
 								icon={() => (
 									<Icon
 										name='magnify'
-										color={colors.background}
+										color={colors.selectedText}
 										size={28}
 									/>
 								)}
@@ -80,7 +81,7 @@ export function DrawerContent(props) {
 				<Drawer.Section>
 					<DrawerItem
 						icon={() => (
-							<Icon name='exit-to-app' color={colors.background} size={22} />
+							<Icon name='exit-to-app' color={colors.selectedText} size={22} />
 						)}
 						label='Sign Out'
 						onPress={() => {}}
@@ -91,8 +92,8 @@ export function DrawerContent(props) {
 }
 
 const styles = StyleSheet.create({
-    drawerContent: {
-        flex: 1
+    drawer: {
+        flex: 1,
+        backgroundColor: '#fff'
     },
-
 })

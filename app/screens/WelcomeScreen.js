@@ -6,7 +6,7 @@ import { StyleSheet, View, Text, ImageBackground, TouchableOpacity } from 'react
 
 import colors from '../config/colors'
 import LoginScreen from './LoginScreen';
-
+import SignupScreen from './SignupScreen'
 function WelcomeScreen({ navigation, LoginScreen }) {
 	return (
 		<ImageBackground
@@ -23,7 +23,7 @@ function WelcomeScreen({ navigation, LoginScreen }) {
 				</TouchableOpacity>
 				<TouchableOpacity
 					style={styles.button}
-					onPress={() => navigation.navigate('Sign Up')}
+					onPress={() => navigation.navigate('SignupScreen')}
                 >
 					<Text style={styles.buttonText}>Sign Up</Text>
 				</TouchableOpacity>
